@@ -2,7 +2,7 @@
 Consolidated repo of data &amp; code to learn EHR data.  
 ---  
 
-MIMIC IV OMOP Demo Data Source & Citation  
+## MIMIC IV OMOP Demo Data Source & Citation  
 
 https://physionet.org/content/mimic-iv-demo-omop/0.9/  
 https://doi.org/10.13026/2d25-8g07
@@ -19,7 +19,7 @@ Circulation [Online]. 101 (23), pp. e215–e220. RRID:SCR_007345.
 
 
 ---
-Synthea synthetic data download
+## Synthea synthetic data download  
 https://synthea.mitre.org/downloads
 
 ~~~
