@@ -1,3 +1,4 @@
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/peleese/education/HEAD)
 # education
 Consolidated repo of data &amp; code to learn EHR data.  
 ---  
