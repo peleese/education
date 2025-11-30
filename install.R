@@ -2,4 +2,5 @@
 install.packages("readr")
 install.packages("dplyr")
 install.packages("sqldf")
+install.packages("omopcept")
 
