@@ -2,5 +2,6 @@
 install.packages("readr")
 install.packages("dplyr")
 install.packages("sqldf")
-install.packages("omopcept")
+install.packages("remotes")
+remotes::install_github("catalamarti/omopcept")
 
