@@ -1,0 +1,8 @@
+#!/bin/bash
+set -eux
+
+echo "Running R preprocessing script..."
+
+Rscript env_setup.R
+
+echo "R script finished."
