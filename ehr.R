@@ -1,5 +1,23 @@
-library(readr)
-library(dplyr)
+library(readr);
+library(dplyr);
+library(sqldf);
+library(omopcept);
+library(arrow);
+
+
+cond_concepts = condition_occurrence %>%
+                select(condition_concept_id) %>% 
+                mutate(
+    condition_concept_id = as.integer(condition_concept_id)
+  ) %>%
+                unique() %>%
+                collect() %>%
+                na.omit())
+
+
+test <- omopcept::omop_concept() %>%
+  filter(concept_id %in% cond_concepts$condition_concept_id) %>%
+  collect()
 
 
 # R can read directly from zip files
