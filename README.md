@@ -1,7 +1,12 @@
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/peleese/education/HEAD)
-# education
-Consolidated repo of data &amp; code to learn EHR data.  
+# EHR Data 101 - a data & programming forward approach
+
+This is a consolidated repo of data &amp; code to begin learning healthcare data science, with an emphasis on EHR data.  
 ---  
+## OHDSI Eunomia Package  
+https://github.com/OHDSI/Eunomia?tab=readme-ov-file  
+
+The R Eunomia package facilitates easily getting access to OMOP data from OHDSI Eunomia Datasets Repository. Previously I linked directly to the Synthea and MIMIC IV OMOP datasets (details below), but Eunomia potentially makes accessing this data a bit easier. 
 
 ## MIMIC IV OMOP Demo Data Source & Citation  
 
