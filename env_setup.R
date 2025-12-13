@@ -98,7 +98,7 @@ concepts <- omopcept::omop_concept() %>%
 
 
 # ============================
-# 4. Write everything back to CSV
+# 4. Clean-up directories
 # ============================
 
 library(fs)
@@ -112,6 +112,9 @@ file_move(files, "OMOP")
 
 # Write better concepts table
 write_csv(concepts,               "OMOP/concepts.csv")
+
+#delete raw directory
+dir_delete("raw")
 
 
 
