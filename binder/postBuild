@@ -3,6 +3,6 @@ set -eux
 
 echo "Running R preprocessing script..."
 
-Rscript env_setup.R
+Rscript scripts/env_setup.R
 
 echo "R script finished."
