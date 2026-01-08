@@ -1,0 +1,21 @@
+name: education-binder
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - r-base=4.3
+  - r-irkernel
+  - jupyterlab
+
+  # Python packages
+  - numpy
+  - pandas
+  - matplotlib
+
+  # R packages
+  - r-tidyverse
+  - r-data.table
+
+  - pip
+  - pip:
+      - jupyterlab-git
