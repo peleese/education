@@ -1,59 +1,48 @@
-library(readr);
-library(dplyr);
-library(sqldf);
-library(omopcept);
-library(arrow);
+library(readr)
+library(dplyr)
+library(sqldf)
 
 
-cond_concepts = condition_occurrence %>%
-                select(condition_concept_id) %>% 
-                mutate(
-    condition_concept_id = as.integer(condition_concept_id)
-  ) %>%
-                unique() %>%
-                collect() %>%
-                na.omit())
+##set root working directory
+
+setwd("/home/jovyan")
 
 
-test <- omopcept::omop_concept() %>%
-  filter(concept_id %in% cond_concepts$condition_concept_id) %>%
-  collect()
+##load csvs as dataframes 
+person = as.data.frame(read.csv("OMOP/person.csv"))
+
+condition_occurrence = as.data.frame(read.csv("OMOP/condition_occurrence.csv"))
+
+visit_occurrence = as.data.frame(read.csv("OMOP/visit_occurrence.csv"))
+
+drug_exposure = as.data.frame(read.csv("OMOP/drug_exposure.csv"))
+
+observations = as.data.frame(read.csv("OMOP/observation.csv"))
+
+procedure_occurrence = as.data.frame(read.csv("OMOP/procedure_occurrence.csv"))
+
+measurement = as.data.frame(read.csv("OMOP/measurement.csv"))
+
+concept = as.data.frame(read.csv("OMOP/concepts.csv"))
 
 
-# R can read directly from zip files
-person <- read_csv(unz("synthea_sample_data_csv_latest.zip", "patients.csv"))
-
-condition_occurrence <- read_csv(unz("synthea_sample_data_csv_latest.zip", "conditions.csv"))
-
-visit_occurrence <- read_csv(unz("synthea_sample_data_csv_latest.zip", "encounters.csv"))
-
-drug_exposure <- read_csv(unz("synthea_sample_data_csv_latest.zip", "medications.csv"))
-
-observation <- read_csv(unz("synthea_sample_data_csv_latest.zip", "observations.csv"))
-
-procedure_occurrence <- read_csv(unz("synthea_sample_data_csv_latest.zip", "procedures.csv"))
+#lets look at those dataframes
+person %>%
+  select(person_id, gender_concept_id, gender_source_value) %>%
+  head()
 
 
-# Or extract all files first
-#unzip("data.zip", exdir = "data/")
-#df <- read_csv("data/data.csv")
-
-# Extract all files from zip
-unzip('mimic_IV_omop_data_csv.zip')
+condition_occurrence %>%
+  select(condition_occurrence_id, condition_concept_id, condition_source_value) %>%
+  head()
 
 
-#read all csv's into dataframes together in a list
-
-dir_path <- "mimic_IV_omop_data_csv"
-
-# List all CSV files in the directory
-csv_files <- list.files(dir_path, full.names = TRUE)
-
-# Read each CSV and store in a named list
-dfs <- setNames(
-  lapply(csv_files, read.csv),
-  tools::file_path_sans_ext(basename(csv_files))
+#join conditions to concept to pick up the concept names
+sqldf("select 
+        condition_occurrence_id,
+        condition_concept_id,
+        condition_source_value,
+        concept_name
+       from condition_occurrence a LEFT JOIN concept b on a.condition_concept_id = b.concept_id
+       limit 10"
 )
-
-#extract specific dataframs from list into global environment
-concept=dfs[["2b_concept"]]
