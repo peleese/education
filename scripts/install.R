@@ -1,3 +1,7 @@
+
+# Set CRAN mirror
+options(repos = c(CRAN = "https://cloud.r-project.org"))
+
 # Core tidyverse packages for data manipulation and visualization
 install.packages("readr")
 install.packages("dplyr")
