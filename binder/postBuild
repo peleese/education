@@ -1,6 +1,9 @@
 #!/bin/bash
 set -eux
 
+echo "Installing required R packages..."
+Rscript scripts/install.R
+
 echo "Running R preprocessing script..."
 
 Rscript scripts/env_setup.R
