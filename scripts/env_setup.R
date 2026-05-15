@@ -1,7 +1,7 @@
 library(readr)
 library(dplyr)
 library(sqldf)
-library(arrow)
+##library(arrow)
 library(omopcept)
 
 # ============================
