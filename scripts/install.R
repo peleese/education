@@ -9,5 +9,5 @@ install.packages("tidyr")
 install.packages("sqldf")
 install.packages("remotes")
 remotes::install_github("catalamarti/omopcept")
-install.packages("arrow")
+##install.packages("arrow")
 
