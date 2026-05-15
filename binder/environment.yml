@@ -4,6 +4,7 @@ channels:
 dependencies:
   - python=3.11
   - r-base=4.3
+  - r-arrow
   - r-irkernel
   - jupyterlab
 
